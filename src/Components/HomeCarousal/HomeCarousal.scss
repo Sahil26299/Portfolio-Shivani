@@ -1,0 +1,126 @@
+.CarousalWrapper {
+  padding-top: 5vh;
+}
+
+.CarousalItemWrapper {
+  display: flex;
+  height: 500px;
+  width: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0.6;
+  flex-direction: column;
+  display: grid;
+  // align-content: center;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+}
+.slideContentInner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  padding-bottom: 5%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+  .slideTitle {
+    font-size: 24px;
+    width: 80%;
+    text-align: left;
+    color: #fff;
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+  }
+
+  .slideSubtitle {
+    font-size: 20px;
+    width: 80%;
+    text-align: left;
+    color: #fff;
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5)
+  }
+
+  .slideDescription {
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+  }
+}
+
+.slideContentInnerHovered {
+  transform: translateZ(50px);
+}
+
+.slides {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: transform 0.75s, opacity 0.75s;
+  >.slide {
+    grid-area: 1 / -1;
+  }
+
+  >button {
+    width: 10px;
+    height: 10px;
+    // appearance: none;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    color: #fff;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    // top: 30%;
+    transition: font-size 0.3s;
+    opacity: 1;
+    z-index: 5;
+
+    &:hover {
+      font-size: 5.5rem;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:first-child {
+      left: 25%;
+    }
+
+    &:last-child {
+      right: 25%;
+    }
+  }
+}
+.showSlides{
+  opacity: 1;
+    transform: translateY(0px);
+}
+.slide[data-active] {
+  z-index: 2;
+  pointer-events: auto;
+
+  .TiltCarousal {
+    transform-style: preserve-3d;
+  }
+
+  .slideContentInner {
+    opacity: 1;
+  }
+
+  .CarousalItemWrapper {
+    opacity: 1;
+
+    transform: perspective(1000px);
+  }
+}
