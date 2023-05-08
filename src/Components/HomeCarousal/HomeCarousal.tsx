@@ -11,29 +11,29 @@ const CarousalData = [
     {
         key: 0,
         image: CarousalImage1,
-        title: 'Stone Chariot',
+        title: 'Stone Charriot',
         subtitle:"-Hampi",
         description: 'A piece of heaven!'
     },
     {
         key: 1,
         image: CarousalImage2,
-        title: 'Gokundi',
-        subtitle:"-Orissa",
+        title: 'Rajgad Fort',
+        subtitle:"-Maharashtra",
         description: 'Let your dreams come true!'
     },
     {
         key: 2,
         image: CarousalImage3,
         title: 'Harishchandragad',
-        subtitle:"-Ahmednagar, Maharashtra",
+        subtitle:"-Maharashtra",
         description: 'A piece of heaven!'
     },
     {
         key: 3,
         image: CarousalImage4,
-        title: 'Butterfly Beach',
-        subtitle:"-Goa",
+        title: 'Cola Beach',
+        subtitle:"-South Goa",
         description: 'Let your dreams come true!'
     },
     {
@@ -48,12 +48,7 @@ type State = {
     slideIndex: number;
 };
 const initialState: State = {
-    slideIndex: 0
-};
-type Slide = {
-    key: number;
-    image: string;
-
+    slideIndex: 4
 };
 
 
@@ -64,7 +59,7 @@ type Action =
     | {
         type: "PREV";
     };
-const slidesReducer = (state: State, event: Action) => {
+const slidesReducer = (state: State, event: Action):State => {
     const { slideIndex } = state;
     if (event.type === "NEXT") {
         return {
@@ -79,17 +74,29 @@ const slidesReducer = (state: State, event: Action) => {
                 slideIndex === 0 ? CarousalData.length - 1 : slideIndex - 1
         };
     }
+    else {
+        throw new Error ('Unhandled action type')
+    }
 };
-export default function HomeCarousal(props: React.ReactNode) {
-    const [state, dispatch] = useReducer(slidesReducer, initialState);
+export default function HomeCarousal() {
+    const [state, dispatch] = useReducer<React.Reducer<State, Action>>(slidesReducer,initialState);
     const [CarousalVisible, setCarousalVisible] = useState(false)
     const [onMouseEnter, setonMouseEnter] = useState(false);
-    const MyCarousalRef = useRef()
+    const MyCarousalRef = useRef<HTMLDivElement>(null)
     useEffect(()=>{
         let CarousalObserver = new IntersectionObserver((entries)=>{
-            setCarousalVisible(entries[0].isIntersecting)
+            if(entries[0].isIntersecting){
+                setTimeout(() => {
+                    setCarousalVisible(entries[0].isIntersecting)
+                }, 250);
+            }
+            else{
+                setCarousalVisible(entries[0].isIntersecting)
+            }
         });
-        CarousalObserver.observe(MyCarousalRef.current)
+        if(MyCarousalRef.current){
+            CarousalObserver.observe(MyCarousalRef.current)
+        }
     },[])
 
     const handleNextSlide = () => {
@@ -106,11 +113,10 @@ export default function HomeCarousal(props: React.ReactNode) {
 
                 {
                     [...CarousalData, ...CarousalData, ...CarousalData].map((item, index) => {
-                        let offset = CarousalData.length + (state.slideIndex - index);
+                        let offset = CarousalData.length + (state?.slideIndex - index);
                         const active = offset === 0 ? true : null;
-                        console.log(active, '12')
                         return (
-                            <div className='slide' data-active={active} style={{ "--offset": offset, "--dir": offset === 0 ? 0 : offset > 0 ? 1 : -1 }} >
+                            <div className='slide' data-active={active} style={{ "--offset": offset, "--dir": offset === 0 ? 0 : offset > 0 ? 1 : -1 } as React.CSSProperties} >
                                 <Tilt className='TiltCarousal' onEnter={()=>active ? setonMouseEnter(true) : null} onLeave={()=>setonMouseEnter(false)} style={{ height: 500, width: 300, }} perspective={900} tiltEnable={active != null} tiltReverse={true} >
                                     <div className='CarousalItemWrapper' style={{ backgroundImage: `url(${item.image})` }} >
                                     <div className={`slideContentInner ${onMouseEnter ? "slideContentInnerHovered" : ""} `}>

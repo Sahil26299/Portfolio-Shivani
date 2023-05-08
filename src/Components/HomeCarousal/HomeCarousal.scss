@@ -1,5 +1,6 @@
 .CarousalWrapper {
   padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .CarousalItemWrapper {
@@ -24,10 +25,12 @@
   align-self: center;
   padding-bottom: 5%;
   opacity: 0;
+  transform: translateY(150px);
+  // transform: translateY(125px);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 
   .slideTitle {
-    font-size: 24px;
+    font-size: 30px;
     width: 80%;
     text-align: left;
     color: #fff;
@@ -35,7 +38,7 @@
   }
 
   .slideSubtitle {
-    font-size: 20px;
+    font-size: 24px;
     width: 80%;
     text-align: left;
     color: #fff;
@@ -49,10 +52,6 @@
   }
 }
 
-.slideContentInnerHovered {
-  transform: translateZ(50px);
-}
-
 .slides {
   display: grid;
   align-items: center;
@@ -61,7 +60,7 @@
   padding-top: 3%;
   padding-bottom: 3%;
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(50px);
   transition: transform 0.75s, opacity 0.75s;
   >.slide {
     grid-area: 1 / -1;
@@ -116,6 +115,11 @@
 
   .slideContentInner {
     opacity: 1;
+    transform: translateY(0px);
+  }
+  .slideContentInnerHovered {
+    // opacity: 1;
+    transform: translateZ(50px);
   }
 
   .CarousalItemWrapper {
