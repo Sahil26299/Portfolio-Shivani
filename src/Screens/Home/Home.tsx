@@ -10,21 +10,23 @@ const Home: React.FC = () => {
   const Colors = useContext(ColorSchema);
   const [isProfileVisible, setisProfileVisible] = useState(false)
   const [text] = useTypewriter({
-    words: ['Traveller', 'Human Resource', 'Explorer', 'Trekker'],
+    words: ['Trekker | Traveller | Explorer', 'Human Resource'],
     loop: 0,
     typeSpeed: 100,
-    deleteSpeed: 50,
+    deleteSpeed: 35,
     delaySpeed: 2000
   });
   const ProfileRef = useRef<HTMLDivElement>(null);
   const CarousalRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     console.log(window.scrollY,'123')
-    let CarousalObserver = new IntersectionObserver((entries) => {
-      setisProfileVisible(entries[0].isIntersecting)
+    let ProfileObserver = new IntersectionObserver((entries) => {
+      setTimeout(() => {
+        setisProfileVisible(entries[0].isIntersecting)
+      }, 25);
     })
     if (ProfileRef.current) {
-      CarousalObserver.observe(ProfileRef.current)
+      ProfileObserver.observe(ProfileRef.current)
     }
   }, [])
   const handleScroll = () => {
@@ -37,11 +39,11 @@ const Home: React.FC = () => {
   }
   return (
     <div className='Wrapper' style={{ backgroundColor: Colors.newVar.BGColor }}>
-      <TopNavBar />
-      <div ref={ProfileRef} className='ProfileWraper' >
-        <div className='Intro' >
-          <span style={{ color: Colors.newVar.TXTColor }} >hi, i am</span>
-          <span  >shivani</span>
+      {/* <TopNavBar /> */}
+      <div ref={ProfileRef} className={`ProfileWraper ${isProfileVisible ? 'FadeYIn' : ''} `} >
+        <div className='Intro ' >
+          <span style={{ color: Colors.newVar.TXTColor }} >hi there,</span>
+          <span style={{ color: Colors.newVar.TXTColor }} >i am <span  >shivani</span></span>
           <hr />
           <p className="typewriter" style={{ color: Colors.newVar.TXTColor }} >{text}<span className='Cursor' style={{ color: Colors.newVar.TXTColor }} >|</span></p>
         </div>
