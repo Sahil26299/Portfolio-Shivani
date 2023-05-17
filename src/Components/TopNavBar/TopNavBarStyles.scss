@@ -1,12 +1,29 @@
-.TabsName{
- font-family: 'Poppins', sans-serif !important;  
+@import '../../commonStyle';
+
+.TabsName {
+    font-family: 'Poppins', sans-serif !important;
 }
-.Title{
+
+.Title {
     font-family: 'Times New Roman', Times, serif !important;
+    transition: color 0.25s ease-in-out;
+
+    &:hover {
+        color: $theme-color;
+    }
 }
-.NavigationButtons{
- font-family: 'Poppins', sans-serif !important;  
+
+.NavigationButtons {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
     font-size: 16px !important;
-
-
+    background: transparent;
+    transition: color 0.25s ease-in-out;
+    margin-left: 1% !important;
+    &:hover {
+        color: $theme-color;
+    }
+}
+.NavigationButtonsActive{
+    color: $theme-color !important;
 }

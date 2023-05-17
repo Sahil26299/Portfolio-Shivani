@@ -1,0 +1,15 @@
+@import '../../commonStyle';
+
+.DividerWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5% 0px;
+    width: 100%;
+    >span{
+        font-size: 30px;
+        color: $theme-color;
+        font-family: cursive;
+        transform: rotate(-3deg);
+    }
+}

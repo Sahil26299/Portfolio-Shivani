@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { ColorSchema } from '../../Utils/GlobalState';
 import './TopNavBarStyles.scss'
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import About from '../../Screens/About/About';
 import ContactUs from '../../Screens/Contact/ContactUs';
 import Home from '../../Screens/Home/Home';
@@ -35,9 +35,15 @@ const pages : Pagetype = {
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TopNavBar() {
-  const Colors = React.useContext(ColorSchema)
+  const Colors = React.useContext(ColorSchema);
+  const location = useLocation();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [ActiveTab, setActiveTab] = React.useState<string | HTMLElement>('/');
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  React.useEffect(()=>{
+    setActiveTab(location.pathname);
+  },[])
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -47,23 +53,18 @@ function TopNavBar() {
   };
 
   const TabChange = (pageName : string) => {
-
+    setActiveTab(pages[pageName]);
   }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
-
   return (
     <>
-      <AppBar position="static" style={{ backgroundColor: 'transparent' }} >
+      <AppBar position="sticky" style={{ backgroundColor: Colors.newVar.BGColor }} >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
             <Typography
               variant="h6"
               noWrap
@@ -113,7 +114,7 @@ function TopNavBar() {
               >
                 {Object.keys(pages).map((page) => (
                   <MenuItem component={Link} to={pages[page]} key={page} onClick={handleCloseNavMenu} >
-                    <Typography className='TabsName' textAlign="center">{page}</Typography>
+                    <Typography className='TabsName' textAlign="center">{page?.includes('_') ? page?.split("_").join(" ") : page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -128,14 +129,13 @@ function TopNavBar() {
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
                 flexGrow: 1,
-                fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              EXPLORE
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {Object.keys(pages).map((page) => (
@@ -143,11 +143,11 @@ function TopNavBar() {
                   key={page}
                   component={Link}
                   to={pages[page]}
-                  className='NavigationButtons'
+                  className={`NavigationButtons ${ ActiveTab==pages[page] ? "NavigationButtonsActive" : ""}`}
                   onClick={()=>TabChange(page)}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                  {page}
+                  {page?.includes('_') ? page?.split("_").join(" ") : page}
                 </Button>
               ))}
             </Box>
