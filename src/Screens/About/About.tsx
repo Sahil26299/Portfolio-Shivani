@@ -1,10 +1,11 @@
-import { useContext } from 'react'
+import { useContext, } from 'react'
 import './AboutStyles.scss'
 import { ColorSchema } from '../../Utils/GlobalState'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ProfileImage from '../../assets/Images/shivaniProfile.jpg';
 import Divider from '../../Components/CommonDivider/Divider';
+import FooterComponent from '../../Components/FooterComponent/FooterComponent';
 
 export default function About() {
   const Colors = useContext(ColorSchema);
@@ -15,7 +16,7 @@ export default function About() {
           <Grid className='firstGridItem' item lg={6} display={'flex'} alignItems={'flex-end'} flexDirection={'column'} >
             <h2  >Wanna know about me ?</h2>
             <span style={{ color: Colors.newVar.TXTColor }}  >
-              <span> At the age of 7, I embarked on my journey in trekking,
+              <span> At the age of 7, I began my journey in trekking,
                 igniting a passion that has fueled my travels for over 15 years.
                 As a Human Resource Manager by profession, I lead a corporate life,
                 but my true calling lies in the nomadic pursuit of travel and trekking.
@@ -39,6 +40,8 @@ export default function About() {
         </Grid>
       </Box>
       <Divider/>
+      <FooterComponent />
+      
     </div>
   )
 }

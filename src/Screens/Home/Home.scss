@@ -49,13 +49,13 @@
             background: $theme-color;
             border: none;
             border-radius: 3px;
-            margin: 5% 0px;
+            margin: 3% 0px 5% 0px;
         }
 
         .typewriter {
             display: inline-block;
             overflow: hidden;
-            font-size: 40px;
+            font-size: 24px;
             font-weight: 500;
             white-space: nowrap;
             min-height: 1.6em;
@@ -110,8 +110,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
-    top: 60px;
+    // position: sticky;
+    // top: 60px;
     .ScrollDownButton {
         height: 50px;
         width: 30px;
@@ -142,4 +142,131 @@
         }
     }
 
+}
+
+
+@media (max-width:1000px){
+    .ProfileWraper{
+        .Intro {
+            >span:first-child {
+                font-size: 30px;
+            }
+    
+            >span {
+                font-size: 30px;
+                >span{
+                    font-size: 50px;
+                }
+            }
+    
+            >hr {
+                width: 100px;
+                margin: 3% 0px 5% 0px;
+            }
+    
+            .typewriter {
+                font-size: 18px;
+                font-weight: 500;
+                min-height: 1.2em;
+            }
+    
+            .Cursor {
+                height: 1.2em;
+            }
+        }
+    
+        .ProfilePictureContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 30%;
+    
+            .ProfilePicture {
+                height: 250px;
+                width: 250px;
+            }
+        }
+    }
+}
+
+@media (max-width:650px){
+    .ProfileWraper{
+        flex-direction: column-reverse;
+        margin-top: 5%;
+        .Intro {
+            align-items: center;
+            >span:first-child {
+                font-size: 24px;
+                text-align: center;
+            }
+    
+            >span:nth-child(2) {
+                font-size: 24px;
+                width: 75vw;
+                text-align: center;
+                >span{
+                    font-size: 40px;
+                    text-align: center;
+                }
+            }
+    
+            >hr {
+                width: 100px;
+                margin: 5% 0px 7% 0px;
+            }
+    
+            .Cursor {
+                height: 1.2em;
+            }
+        }
+    
+        .ProfilePictureContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+    
+            .ProfilePicture {
+                height: 200px;
+                width: 200px;
+            }
+        }
+    }
+}
+
+@media (max-width:350px){
+    .ProfileWraper{
+        .Intro {
+            >span:first-child {
+                font-size: 20px;
+            }
+    
+            >span:nth-child(2) {
+                font-size: 20px;
+                >span{
+                    font-size: 30px;
+                }
+            }
+            >hr {
+                width: 50px;
+                height: 3px;
+                border-radius: 1.5px;
+                margin: 3% 0px 5% 0px;
+            }
+            .typewriter {
+                font-size: 16px;
+            }
+            .Cursor {
+                height: 1.2em;
+            }
+        }
+    
+        .ProfilePictureContainer {
+    
+            .ProfilePicture {
+                height: 150px;
+                width: 150px;
+            }
+        }
+    }
 }

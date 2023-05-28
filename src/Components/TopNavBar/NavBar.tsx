@@ -23,14 +23,14 @@ import Home from '../../Screens/Home/Home';
 type Pagetype = {
   Home: string,
   About_Me: string,
-  Contact: string,
+  Connect_with_me: string,
   [key: string]: string,
 }
 
 const pages : Pagetype = {
   Home: '/',
   About_Me: '/profile',
-  Contact: '/contact'
+  Connect_with_me: '/contact'
 }
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -43,7 +43,7 @@ function TopNavBar() {
 
   React.useEffect(()=>{
     setActiveTab(location.pathname);
-  },[])
+  },[location.pathname])
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

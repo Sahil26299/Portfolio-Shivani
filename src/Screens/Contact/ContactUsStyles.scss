@@ -1,0 +1,125 @@
+.ContactWrapper {
+    width: 100vw;
+}
+
+.BGImageWrapper {
+    width: 700px;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    // background-blend-mode: overlay;
+    >.BGImageInnerWrapper {
+        background: rgba(0, 0, 0, 0.3);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        >.BGImageCard {
+            background: rgba(0, 0, 0, 0.55);
+            height: 35%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            >h2 {
+                text-shadow: 0px 0px 10px rgba(255, 227, 181, 0.25);
+                margin-bottom: 15px;
+                font-size: 36px;
+            }
+    
+            >.OrSection {
+                display: flex;
+                align-items: center;
+                margin-top: 15px;
+    
+                >.HorizontalRuler {
+                    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.25));
+                    height: 1px;
+                    width: 120px;
+                }
+    
+                >span {
+                    font-size: 18px;
+                    margin: 0px 15px
+                }
+            }
+    
+            >span {
+                font-size: 18px;
+                margin-top: 15px
+            }
+        }
+
+    }
+}
+
+.FormWrapper {
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+
+    border-radius: 7px;
+    padding: 8% 8%;
+
+    >form {
+        #emailInputdiv {
+            border-bottom: 1px solid;
+            width: 375px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        #messageInputdiv {
+            border-bottom: 1px solid;
+            width: 375px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        #email,
+        #name,
+        #message {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            box-shadow: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            margin: 10px 0px;
+            width: 85%;
+            /* width: 10vw; */
+        }
+        >.LoaderContainer {
+            height: 100px;
+            width: 100px;
+            background: transparent;
+            margin-top: 10px;
+            transform: rotate(45deg);
+            >img{
+                height: 100%;
+                width: 100%;
+                mix-blend-mode: multiply;
+            }
+        }
+        .Submitbtn{
+            padding: 7px; 
+            border-radius: 5px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            outline: none;
+            border: none; 
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../commonStyle';
+
+.SocialIconsWrapper {
+    align-items: center;
+
+    >.ToolTipSocialIcons {
+        margin-left: 15px;
+        background-color: $theme-color;
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.25s ease-in-out, outline 0.25s ease-in-out;
+
+        >.MaterialIcon {
+            color: #000;
+        }
+
+        &:hover {
+            background-color: transparent;
+            outline: 3px solid $theme-color;
+
+            >.MaterialIcon {
+                color: $theme-color;
+            }
+        }
+    }
+}
