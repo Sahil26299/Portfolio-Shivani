@@ -116,7 +116,9 @@
   pointer-events: auto;
 
   .TiltCarousal {
-    transform-style: preserve-3d;
+    &:hover{
+      transform-style: preserve-3d;
+    }
   }
 
   .slideContentInner {
@@ -200,7 +202,11 @@
       }
     }
     >button {
-  
+      background-color: transparent;
+      user-select: none;
+      &:hover {
+        font-size: 4rem;
+      }
       &:first-child {
         left: -5%;
       }
@@ -242,9 +248,11 @@
     }
     >button {
       font-size: 3rem;
-  
+      user-select: none;
+      background-color: transparent;
+
       &:hover {
-        font-size: 3.5rem;
+        font-size: 3rem;
       }
       &:first-child {
         left: -5%;
@@ -253,6 +261,51 @@
       &:last-child {
         right: -5%;
       }
+    }
+  }
+}
+
+@media (max-width:350px) {
+  
+  .slides {
+    .slide {
+      height: 250px;
+      width: 150px;
+      .CarousalItemWrapper {
+        height: 250px;
+        width: 150px;
+        .slideContentInner {
+      
+          .slideTitle {
+            font-size: 16px;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+          }
+      
+          .slideSubtitle {
+            font-size: 14px;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+          }
+      
+          .slideDescription {
+            font-size: 12px;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+          }
+        }
+      }
+    }
+    >button {
+      font-size: 2.5rem;
+      user-select: none;
+      &:hover {
+        font-size: 2.5rem;
+      }
+      // &:first-child {
+      //   left: -7%;
+      // }
+  
+      // &:last-child {
+      //   right: -7%;
+      // }
     }
   }
 }

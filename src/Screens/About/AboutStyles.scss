@@ -2,7 +2,8 @@
 
 .AboutWrapper {
     width: 100vw;
-    height: 100vh;
+    // height: 100%;
+    min-width: 100%;
 }
 
 .GridContainer {
@@ -12,10 +13,11 @@
         >h2 {
             color:$theme-color;
             font-size: 24px;
+            text-align: center;
         }
 
         >span {
-            width: 50%;
+            width: 60%;
             font-size: 14px;
             text-align: right;
         }
@@ -32,3 +34,108 @@
         }
     }
 }
+
+@media (max-width:1200px) {
+    .GridContainer {
+        padding: 5% 0px 0px 0px !important;
+        .firstGridItem {
+            // background: red;
+    
+            >h2 {
+                color:$theme-color;
+                font-size: 20px;
+            }
+    
+            >span {
+                width: 75%;
+                font-size: 13px;
+                text-align: right;
+            }
+        }
+    
+        .secondGridItem {
+    
+            // background: green;
+            .ProfileImage {
+                height: 400px;
+                object-fit: contain;
+                border: 3px dashed $theme-color;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+@media (max-width:950px){
+    .GridContainer {
+        .firstGridItem {
+            width: 75%;
+            margin-top: 3%;
+            >h2 {
+                color:$theme-color;
+                font-size: 24px;
+            }
+    
+            >span {
+                width: 80%;
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+    
+        .secondGridItem {
+    
+            // background: green;
+            .ProfileImage {
+                height: 500px;
+                object-fit: contain;
+                border: 3px dashed $theme-color;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+@media (max-width:550px){
+    .GridContainer{
+        .secondGridItem {
+        
+            // background: green;
+            .ProfileImage {
+                height: 400px;
+                object-fit: contain;
+                border: 3px dashed $theme-color;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width:400px){
+    .GridContainer {
+        .firstGridItem {
+            width: 80%;
+            margin-top: 3%;
+            >h2 {
+                color:$theme-color;
+                font-size: 20px;
+            }
+    
+            >span {
+                width: 80%;
+                font-size: 13px;
+                text-align: center;
+            }
+        }
+    
+        .secondGridItem {
+    
+            // background: green;
+            .ProfileImage {
+                height: 300px;
+                object-fit: contain;
+                border: 3px dashed $theme-color;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+

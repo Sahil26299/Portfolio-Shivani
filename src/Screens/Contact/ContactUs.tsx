@@ -10,8 +10,7 @@ import { Mail, SendRounded, AccountCircle, Message, Error } from '@mui/icons-mat
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Radio } from 'react-loader-spinner';
-import Divider from '../../Components/CommonDivider/Divider';
-import FooterComponent from '../../Components/FooterComponent/FooterComponent';
+import Button from '@mui/material/Button';
 
 export default function ContactUs() {
   const Colors = useContext(ColorSchema);
@@ -22,6 +21,7 @@ export default function ContactUs() {
   const [Email, setEmail] = useState<string>('')
   const [EmailError, setEmailError] = useState<string | null>(null);
   const [showLoader, setshowLoader] = useState<boolean>(false);
+  const [showForm, setshowForm] = useState<boolean>(false)
 
   const [screenDimensions, setScreenDimensions] = React.useState({
     width: window.innerWidth,
@@ -39,6 +39,7 @@ export default function ContactUs() {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const ValidateMessage = (msg: string) => {
     if (msg) {
       setmessageError(null);
@@ -72,18 +73,18 @@ export default function ContactUs() {
     theme: "light",
   });
 
-  const notifyWarn = (msg: string) => {
-    toast.warn(msg, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
-  }
+  // const notifyWarn = (msg: string) => {
+  //   toast.warn(msg, {
+  //     position: "top-right",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "light",
+  //   })
+  // }
 
   const notifyError = (msg: string) => {
     toast.error(msg, {
@@ -135,12 +136,18 @@ export default function ContactUs() {
       ValidateMessage(message)
     }
   }
+  const style = {
+    display: screenDimensions.width < 900 && !showForm ? 'none' : 'block',
+  };
+  const arrowStyle = {
+    transform:  screenDimensions.width<900 ? showForm ? 'rotate(270deg)' : 'rotate(90deg)' : 'rotate(0deg)',
+  }
 
   return (
     <div className={'ContactWrapper'}  >
       <Box>
         <Grid container alignItems={'center'} justifyContent={'center'} >
-          <Grid item lg={4} md={6} display={'flex'} alignItems={'flex-start'} flexDirection={'column'} >
+          <Grid item lg={5} md={5} sm={12} xs={12} display={'flex'} alignItems={'flex-start'} flexDirection={'column'} >
             <LazyBackground className={'BGImageWrapper'} src={BackgroundImage} placeholder={BackgroundImage} >
               <div className='BGImageInnerWrapper' >
                 <div className='BGImageCard' >
@@ -151,14 +158,16 @@ export default function ContactUs() {
                     <span style={{ color: Colors.newVar.TXTColor }} >Or</span>
                     <div className='HorizontalRuler' />
                   </div>
-                  <span style={{ color: Colors.newVar.TXTColor }} >Drop me a mail &rarr;</span>
+                  <Button className='ButtonClass' color="primary" disabled={screenDimensions.width >= 900} >
+                    <span style={{ color: Colors.newVar.TXTColor }} onClick={()=>setshowForm(!showForm)} >Drop me a mail <span className={showForm ? 'arrowStyleRotated' : 'arrowStyle'} style={arrowStyle} > &rarr;</span></span>
+                  </Button>
                 </div>
               </div>
             </LazyBackground>
           </Grid>
-          <Grid item lg={8} md={6} display={'flex'} alignItems={'center'} justifyContent={'center'} flexDirection={'column'} >
-            <div className='FormWrapper' >
-              <span id='emailLabel' style={{ color: '#1d1d1d', fontSize:20, fontWeight: '500' }} >Write a message:</span>
+          <Grid item lg={7} md={7} sm={12} xs={12} display={'flex'} alignItems={'center'} justifyContent={'center'} flexDirection={'column'} >
+            <div className='FormWrapper' style={style} >
+              <span id='emailLabel' style={{ color: '#1d1d1d', fontSize:screenDimensions.width < 1000 ? 18 : 20, fontWeight: '500' }} >Write a message:</span>
               <form action="" onSubmit={OnSendClick}>
                 <div id={'emailInputdiv'} style={{ borderBottomColor: NameError != null ? 'red' : 'rgb(65, 195, 247)' }}>
                   <input type={'text'} value={Name} id={'name'} name={'from_name'} style={{ color: '#1d1d1d' }} maxLength={60} placeholder={'Your name'} onChange={(text) => {
@@ -189,8 +198,8 @@ export default function ContactUs() {
                   {showLoader ?
                     <Radio
                     visible={true}
-                    height="55"
-                    width="55"
+                    height={screenDimensions.width < 1000 ? "40" : "55"}
+                    width={screenDimensions.width < 1000 ? "40" : "55"}
                     ariaLabel="radio-loading"
                     colors={['rgb(65, 195, 247)','rgba(65, 195, 247, 0.75)', "rgba(65, 195, 247, 0.5)"]}
                     wrapperStyle={{}}
@@ -202,7 +211,7 @@ export default function ContactUs() {
                 </div>
               </form>
             </div>
-            <Divider />
+            {/* <Divider WrapperStyle={{width:'75%', paddignRight:10}} /> */}
           </Grid>
         </Grid>
       </Box>
@@ -218,7 +227,6 @@ export default function ContactUs() {
         pauseOnHover
         theme="light"
       />
-      <FooterComponent/>
     </div>
   )
 }

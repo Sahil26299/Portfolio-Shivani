@@ -119,7 +119,7 @@ export default function HomeCarousal() {
                         const active = offset === 0 ? true : null;
                         return (
                             <div className='slide' data-active={active} style={{ "--offset": offset, "--dir": offset === 0 ? 0 : offset > 0 ? 1 : -1 } as React.CSSProperties} >
-                                <Tilt className='TiltCarousal' onEnter={() => active ? setonMouseEnter(true) : null} onLeave={() => setonMouseEnter(false)} style={{ height: 500, width: 300, }} perspective={900} tiltEnable={active != null} tiltReverse={true} >
+                                <Tilt className='TiltCarousal' onEnter={() => active ? setonMouseEnter(true) : null} onLeave={() => setonMouseEnter(false)} style={{  }} perspective={900} tiltEnable={active != null} tiltReverse={true} >
                                     <LazyBackground className='CarousalItemWrapper' src={item.image} placeholder={PlaceHolderImage} >
                                         <div className={`slideContentInner ${onMouseEnter ? "slideContentInnerHovered" : ""} `}>
                                             <h2 className="slideTitle">{item.title}</h2>

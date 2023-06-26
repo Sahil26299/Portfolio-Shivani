@@ -1,15 +1,18 @@
+@import '../../commonStyle';
+
 .ContactWrapper {
     width: 100vw;
+    height: 100%;
+    min-width: 325px;
 }
 
 .BGImageWrapper {
-    width: 700px;
-    height: 100vh;
+    width: 590px;
+    height: 95vh;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 
-    // background-blend-mode: overlay;
     >.BGImageInnerWrapper {
         background: rgba(0, 0, 0, 0.3);
         height: 100%;
@@ -17,42 +20,48 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        // justify-content: center;
 
         >.BGImageCard {
-            background: rgba(0, 0, 0, 0.55);
-            height: 35%;
+            margin-top: 23%;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5% 0px;
             width: 80%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
             >h2 {
                 text-shadow: 0px 0px 10px rgba(255, 227, 181, 0.25);
                 margin-bottom: 15px;
                 font-size: 36px;
             }
-    
+
             >.OrSection {
                 display: flex;
                 align-items: center;
                 margin-top: 15px;
-    
+
                 >.HorizontalRuler {
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.25));
                     height: 1px;
                     width: 120px;
                 }
-    
+
                 >span {
                     font-size: 18px;
                     margin: 0px 15px
                 }
             }
+            .ButtonClass{
+                outline: none;
+                text-transform: none;
+                >span {
+                    font-size: 18px;
+                    margin-top: 15px;
     
-            >span {
-                font-size: 18px;
-                margin-top: 15px
+                }
             }
         }
 
@@ -62,14 +71,14 @@
 .FormWrapper {
     background-color: #fff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
-
+    margin-top: 5%;
     border-radius: 7px;
-    padding: 8% 8%;
+    padding: 5% 5%;
 
     >form {
         #emailInputdiv {
             border-bottom: 1px solid;
-            width: 375px;
+            width: 350px;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -79,7 +88,7 @@
 
         #messageInputdiv {
             border-bottom: 1px solid;
-            width: 375px;
+            width: 350px;
             display: flex;
             flex-direction: row;
             align-items: flex-start;
@@ -100,26 +109,418 @@
             width: 85%;
             /* width: 10vw; */
         }
-        >.LoaderContainer {
-            height: 100px;
-            width: 100px;
-            background: transparent;
-            margin-top: 10px;
-            transform: rotate(45deg);
-            >img{
-                height: 100%;
-                width: 100%;
-                mix-blend-mode: multiply;
-            }
-        }
-        .Submitbtn{
-            padding: 7px; 
-            border-radius: 5px; 
-            display: flex; 
-            align-items: center; 
+
+        .Submitbtn {
+            padding: 7px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
             justify-content: center;
             outline: none;
-            border: none; 
+            border: none;
+        }
+    }
+}
+
+@media (max-width:1200px) {
+    .BGImageWrapper {
+        width: 550px;
+        height: 90vh;
+
+        >.BGImageInnerWrapper {
+            >.BGImageCard {
+                >h2 {
+                    font-size: 30px;
+                }
+
+                >.OrSection {
+                    >.HorizontalRuler {
+                        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.25));
+                        height: 1px;
+                        width: 120px;
+                    }
+                }
+                .ButtonClass{
+                    >span {
+                        margin-top: 12px
+                    }
+                }
+            }
+
+        }
+    }
+
+    .FormWrapper {
+        border-radius: 7px;
+        padding: 5% 5%;
+
+        >form {
+            #emailInputdiv {
+                width: 300px;
+            }
+
+            #messageInputdiv {
+                width: 300px;
+            }
+
+            #email,
+            #name,
+            #message {
+                font-size: 14px;
+                /* width: 10vw; */
+            }
+
+            .Submitbtn {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width:1000px) {
+    .BGImageWrapper {
+        width: 450px;
+        height: 85vh;
+        background-position-x: center;
+
+        >.BGImageInnerWrapper {
+            >.BGImageCard {
+                // height: 30%;
+                width: 80%;
+
+                >h2 {
+                    font-size: 26px;
+                }
+
+                >.OrSection {
+                    >.HorizontalRuler {
+                        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.25));
+                        height: 1px;
+                        width: 100px;
+                    }
+
+                    >span {
+                        font-size: 16px;
+                        margin: 0px 15px
+                    }
+                }
+
+                .ButtonClass {
+                    >span {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .FormWrapper {
+        border-radius: 7px;
+        padding: 5% 5%;
+
+        >form {
+            #emailInputdiv {
+                width: 300px;
+            }
+
+            #messageInputdiv {
+                width: 300px;
+            }
+
+            #email,
+            #name,
+            #message {
+                font-size: 14px;
+                /* width: 10vw; */
+            }
+
+            .Submitbtn {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width:900px) {
+    .BGImageWrapper {
+        width: 100%;
+        height: 120vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        background-position-x: center;
+
+        >.BGImageInnerWrapper {
+            >.BGImageCard {
+                margin-top: 10%;
+                // height: 30%;
+                width: 75%;
+
+                >h2 {
+                    font-size: 26px;
+                }
+
+                >.OrSection {
+                    >.HorizontalRuler {
+                        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.25));
+                        height: 1px;
+                        width: 100px;
+                    }
+
+                    >span {
+                        font-size: 16px;
+                        margin: 0px 15px
+                    }
+                }
+
+                .ButtonClass {
+                    outline: none;
+
+                    >span {
+                        font-size: 16px;
+                        display: contents;
+                        .arrowStyleRotated {
+                            font-size: 18px;
+                            color: $theme-color;
+                            transition: color 0.25s ease-in-out, transform 0.25s ease-in-out;
+                            margin-left: 5px;
+
+                            
+                        }
+
+                        .arrowStyle {
+                            font-size: 18px;
+                            transition: color 0.25s ease-in-out, transform 0.25s ease-in-out;
+                            margin-left: 5px;
+                            
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    .FormWrapper {
+        background-color: #fff;
+        position: absolute;
+        top: 60%;
+        border-radius: 7px;
+        padding: 5% 5%;
+
+        >form {
+            #emailInputdiv {
+                width: 350px;
+            }
+
+            #messageInputdiv {
+                width: 350px;
+            }
+
+            #email,
+            #name,
+            #message {
+                font-size: 14px;
+                /* width: 10vw; */
+            }
+
+            .Submitbtn {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width:600px) {
+    .BGImageWrapper {
+        background-position-x: center;
+        height: 100vh;
+
+        >.BGImageInnerWrapper {
+            >.BGImageCard {
+                // height: 25%;
+
+                >h2 {
+                    font-size: 20px;
+                }
+
+                >.OrSection {
+                    >.HorizontalRuler {
+                        width: 60px;
+                    }
+
+                    >span {
+                        font-size: 14px;
+                        margin: 0px 15px
+                    }
+                }
+
+                .ButtonClass {
+                    >span {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .FormWrapper {
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        border-radius: 7px;
+        padding: 5% 5%;
+
+        >form {
+
+            #email,
+            #name,
+            #message {
+                font-size: 14px;
+                /* width: 10vw; */
+            }
+
+            .Submitbtn {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width:500px) {
+    .BGImageWrapper {
+        height: 90vh;
+
+        >.BGImageInnerWrapper {
+            >.BGImageCard {
+                // height: 25%;
+
+                >h2 {
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+
+                >.OrSection {
+                    margin-top: 10px;
+
+                    >.HorizontalRuler {
+                        width: 50px;
+                    }
+
+                    >span {
+                        font-size: 13px;
+                        margin: 0px 10px
+                    }
+                }
+
+                .ButtonClass {
+                    >span {
+                        font-size: 13px;
+                        margin-top: 5px
+                    }
+                }
+            }
+
+        }
+    }
+
+    .FormWrapper {
+        background-color: #fff;
+        position: absolute;
+        top: 45%;
+        border-radius: 7px;
+        padding: 5% 5% 0% 5%;
+
+        >form {
+            #emailInputdiv {
+                width: 250px;
+            }
+
+            #messageInputdiv {
+                width: 250px;
+            }
+
+            #email,
+            #name,
+            #message {
+                font-size: 13px;
+                /* width: 10vw; */
+            }
+
+            .Submitbtn {
+                padding: 3px;
+            }
+        }
+    }
+}
+
+@media (max-width:350px) {
+    .BGImageWrapper {
+        height: 90vh;
+
+        >.BGImageInnerWrapper {
+            >.BGImageCard {
+                // height: 25%;
+
+                >h2 {
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
+
+                >.OrSection {
+                    margin-top: 10px;
+
+                    >.HorizontalRuler {
+                        width: 50px;
+                    }
+
+                    >span {
+                        font-size: 13px;
+                        margin: 0px 10px
+                    }
+                }
+
+                .ButtonClass {
+                    >span {
+                        font-size: 13px;
+                        margin-top: 5px
+                    }
+                }
+            }
+
+        }
+    }
+
+    .FormWrapper {
+        background-color: #fff;
+        position: absolute;
+        top: 40%;
+        border-radius: 7px;
+        padding: 5% 5% 0% 5%;
+
+        >form {
+            #emailInputdiv {
+                width: 230px;
+            }
+
+            #messageInputdiv {
+                width: 230px;
+            }
+
+            #email,
+            #name,
+            #message {
+                font-size: 13px;
+                /* width: 10vw; */
+            }
+
+            .Submitbtn {
+                padding: 3px;
+            }
         }
     }
 }

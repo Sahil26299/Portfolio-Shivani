@@ -1,11 +1,9 @@
 import React, { useContext, useRef, useEffect, useState } from 'react';
 import './Home.scss';
 import { ColorSchema } from '../../Utils/GlobalState';
-import TopNavBar from '../../Components/TopNavBar/NavBar';
 import HomeCarousal from '../../Components/HomeCarousal/HomeCarousal';
 import { useTypewriter } from 'react-simple-typewriter'
 import ProfilePicture from '../../assets/Images/PrifileImage.jpeg'
-import FooterComponent from '../../Components/FooterComponent/FooterComponent';
 
 const Home: React.FC = () => {
   const Colors = useContext(ColorSchema);
@@ -60,9 +58,9 @@ const Home: React.FC = () => {
       <div ref={CarousalRef} >
         <HomeCarousal />
       </div>
-      <div>
+      {/* <div>
         <FooterComponent/>
-      </div>
+      </div> */}
     </div>
   );
 };

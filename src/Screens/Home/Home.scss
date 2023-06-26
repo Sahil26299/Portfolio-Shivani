@@ -8,6 +8,7 @@
 .Wrapper {
     height: 100%;
     width: 100vw;
+    min-width: 100%;
 }
 
 .ProfileWraper {
@@ -194,6 +195,7 @@
         flex-direction: column-reverse;
         margin-top: 5%;
         .Intro {
+            margin-top: 5%;
             align-items: center;
             >span:first-child {
                 font-size: 24px;
@@ -211,8 +213,9 @@
             }
     
             >hr {
+                
                 width: 100px;
-                margin: 5% 0px 7% 0px;
+                margin: 1% 0px 10% 0px;
             }
     
             .Cursor {
@@ -227,14 +230,42 @@
             width: 30%;
     
             .ProfilePicture {
-                height: 200px;
-                width: 200px;
+                height: 150px;
+                width: 150px;
             }
         }
+    }
+    .ScrollDownButtonContainer {
+        margin-top: 10%;
+        margin-bottom: 5%;
+        .ScrollDownButton {
+            height: 30px;
+            width: 20px;
+            border-radius: 15px;
+            .innerButton {
+                height: 12px;
+                width: 12px;
+                border-radius: 10px;
+                // background: $theme-color;
+            }
+            @keyframes fluctuateButton {
+                from,
+                to{
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(18px);
+                }
+            }
+        }
+    
     }
 }
 
 @media (max-width:350px){
+    .ScrollDownButtonContainer{
+        display: none;
+    }
     .ProfileWraper{
         .Intro {
             >span:first-child {
@@ -270,3 +301,10 @@
         }
     }
 }
+
+// @media (max-width:300px){
+//     .Wrapper {
+//         // height: 100%;
+//         width: 100%;
+//     }
+// }

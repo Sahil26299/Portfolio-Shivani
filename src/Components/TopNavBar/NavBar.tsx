@@ -12,13 +12,13 @@ import AvatarImage from '../../assets/Images/CarousalImage5.jpeg'
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { ColorSchema } from '../../Utils/GlobalState';
 import './TopNavBarStyles.scss'
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import About from '../../Screens/About/About';
 import ContactUs from '../../Screens/Contact/ContactUs';
 import Home from '../../Screens/Home/Home';
+import FooterComponent from '../FooterComponent/FooterComponent';
 
 type Pagetype = {
   Home: string,
@@ -27,32 +27,27 @@ type Pagetype = {
   [key: string]: string,
 }
 
-const pages : Pagetype = {
+const pages: Pagetype = {
   Home: '/',
   About_Me: '/profile',
   Connect_with_me: '/contact'
 }
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TopNavBar() {
   const Colors = React.useContext(ColorSchema);
   const location = useLocation();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [ActiveTab, setActiveTab] = React.useState<string | HTMLElement>('/');
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setActiveTab(location.pathname);
-  },[location.pathname])
+  }, [location.pathname])
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
-  const TabChange = (pageName : string) => {
+  const TabChange = (pageName: string) => {
     setActiveTab(pages[pageName]);
   }
 
@@ -85,6 +80,7 @@ function TopNavBar() {
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
+              className='MenuIcon'
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -92,7 +88,7 @@ function TopNavBar() {
                 onClick={handleOpenNavMenu}
                 color="inherit"
               >
-                <MenuIcon />
+                <MenuIcon style={{color:Colors.newVar.TXTColor}} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -143,8 +139,8 @@ function TopNavBar() {
                   key={page}
                   component={Link}
                   to={pages[page]}
-                  className={`NavigationButtons ${ ActiveTab==pages[page] ? "NavigationButtonsActive" : ""}`}
-                  onClick={()=>TabChange(page)}
+                  className={`NavigationButtons ${ActiveTab == pages[page] ? "NavigationButtonsActive" : ""}`}
+                  onClick={() => TabChange(page)}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page?.includes('_') ? page?.split("_").join(" ") : page}
@@ -154,7 +150,7 @@ function TopNavBar() {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Hi ">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton className='ProfilePic' sx={{ p: 0, }}>
                   <Avatar alt="Remy Sharp" src={AvatarImage} />
                 </IconButton>
               </Tooltip>
@@ -163,10 +159,11 @@ function TopNavBar() {
         </Container>
       </AppBar>
       <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="profile" element={<About />} />
-            <Route path="contact" element={<ContactUs />} />
-        </Routes>
+        <Route path='/' element={<Home />} />
+        <Route path="profile" element={<About />} />
+        <Route path="contact" element={<ContactUs />} />
+      </Routes>
+      <FooterComponent />
     </>
   );
 }

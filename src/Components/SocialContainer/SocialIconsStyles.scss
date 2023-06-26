@@ -28,3 +28,27 @@
         }
     }
 }
+
+@media (max-width:650px){
+    .SocialIconsWrapper{
+        margin-top: 10px;
+        .ToolTipSocialIcons{
+            margin-left: 10px;
+            background-color: $theme-color;
+            height: 30px;
+            width: 30px;
+            border-radius: 15px;
+        }
+    }
+}
+@media (max-width:400px){
+    .SocialIconsWrapper{
+        .ToolTipSocialIcons{
+            margin-left: 10px;
+            background-color: $theme-color;
+            height: 25px;
+            width: 25px;
+            border-radius: 13px;
+        }
+    }
+}
