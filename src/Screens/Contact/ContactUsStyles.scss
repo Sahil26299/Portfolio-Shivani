@@ -24,7 +24,7 @@
 
         >.BGImageCard {
             margin-top: 23%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             padding: 5% 0px;
             width: 80%;
             display: flex;
@@ -57,6 +57,9 @@
             .ButtonClass{
                 outline: none;
                 text-transform: none;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
                 >span {
                     font-size: 18px;
                     margin-top: 15px;
