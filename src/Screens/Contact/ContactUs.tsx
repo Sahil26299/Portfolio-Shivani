@@ -128,7 +128,6 @@ export default function ContactUs() {
     e.preventDefault();
     if (ValidateEmail(Email) && ValidateName(Name) && ValidateMessage(message)) {
       notifySuccess('Success');
-      // sendEmail()
     }
     else {
       notifyError('Please enter the details!')
@@ -136,6 +135,8 @@ export default function ContactUs() {
       ValidateMessage(message)
     }
   }
+
+
   const style = {
     display: screenDimensions.width < 900 && !showForm ? 'none' : 'block',
   };

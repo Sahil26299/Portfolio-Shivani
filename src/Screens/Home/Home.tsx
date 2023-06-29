@@ -3,7 +3,7 @@ import './Home.scss';
 import { ColorSchema } from '../../Utils/GlobalState';
 import HomeCarousal from '../../Components/HomeCarousal/HomeCarousal';
 import { useTypewriter } from 'react-simple-typewriter'
-import ProfilePicture from '../../assets/Images/PrifileImage.jpeg'
+import ProfilePicture from '../../assets/Images/ProfilePicture.jpeg'
 
 const Home: React.FC = () => {
   const Colors = useContext(ColorSchema);

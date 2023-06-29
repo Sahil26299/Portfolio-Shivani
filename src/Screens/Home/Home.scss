@@ -93,12 +93,12 @@
         width: 30%;
 
         .ProfilePicture {
-            height: 300px;
-            width: 300px;
+            height: 280px;
+            width: 280px;
             object-fit: cover;
             border-radius: 150px;
             overflow: hidden;
-            border: 3px dashed $theme-color;
+            
         }
     }
 }
