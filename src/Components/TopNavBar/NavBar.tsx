@@ -19,10 +19,12 @@ import About from '../../Screens/About/About';
 import ContactUs from '../../Screens/Contact/ContactUs';
 import Home from '../../Screens/Home/Home';
 import FooterComponent from '../FooterComponent/FooterComponent';
+import TravelGallery from '../../Screens/TravelGallery/TravelGallery';
 
 type Pagetype = {
   Home: string,
   About_Me: string,
+  Travel_Gallery: string,
   Connect_with_me: string,
   [key: string]: string,
 }
@@ -30,6 +32,7 @@ type Pagetype = {
 const pages: Pagetype = {
   Home: '/',
   About_Me: '/profile',
+  Travel_Gallery: '/gallery',
   Connect_with_me: '/contact'
 }
 
@@ -161,6 +164,7 @@ function TopNavBar() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="profile" element={<About />} />
+        <Route path="gallery" element={<TravelGallery />} />
         <Route path="contact" element={<ContactUs />} />
       </Routes>
       <FooterComponent />
