@@ -167,7 +167,7 @@ function TopNavBar() {
         <Route path="gallery" element={<TravelGallery />} />
         <Route path="contact" element={<ContactUs />} />
       </Routes>
-      <FooterComponent />
+      {ActiveTab!='/gallery' && <FooterComponent />}
     </>
   );
 }

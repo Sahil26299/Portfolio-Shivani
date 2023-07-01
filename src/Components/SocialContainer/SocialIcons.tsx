@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Call, Mail, LinkedIn, Instagram } from '@mui/icons-material';
+import { Mail, LinkedIn, Instagram } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 import { ColorSchema } from '../../Utils/GlobalState';
 import './SocialIconsStyles.scss'
@@ -25,11 +25,6 @@ export default function SocialIcons(props:any) {
     }, []);
     return (
         <div className='SocialIconsWrapper' style={props.SocialIconsStyles} >
-            <Tooltip className='ToolTipSocialIcons' title={"9011678069"} >
-                <a href={`tel:9011678069`} className={Colors.isDarkMode ? 'socialIcons' : 'SocialIconsDark'}>
-                    <Call className='MaterialIcon' style={{ fontSize: screenDimensions.width<400 ? 16 : screenDimensions.width<650 ? 20 : 24 }} />
-                </a>
-            </Tooltip>
             <Tooltip className='ToolTipSocialIcons' title={"shivanibhojane226@gmail.com"} >
                 <a href="mailto:shivanibhojane226@gmail.com" className={Colors.isDarkMode ? 'socialIcons' : 'SocialIconsDark'}>
                     <Mail className='MaterialIcon' style={{ fontSize: screenDimensions.width<400 ? 16 : screenDimensions.width<650 ? 20 : 24 }} />

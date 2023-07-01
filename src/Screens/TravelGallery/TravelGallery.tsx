@@ -1,6 +1,6 @@
 // Photos from https://citizenofnowhe.re/lines-of-the-city
 import "./TravelGalleryStyles.scss";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -15,7 +15,7 @@ import CarousalImage4 from '../../assets/Images/CarousalImage4.jpeg';
 import CarousalImage5 from '../../assets/Images/CarousalImage5.jpeg';
 
 const ImagesArray = [
-  { ImagePath: CarousalImage1, Title: 'Stone Chariot, Hampi', Description: 'Historical place' },
+  { ImagePath: CarousalImage1, Title: 'Stone Chariot, Hampi', Description: 'Ornate carving of a divine, Hindu vehicle situated on the grounds of the Vijaya Vitthala Temple.' },
   { ImagePath: CarousalImage2, Title: 'Rajgad, Pune', Description: 'Historical hilltop fortress & popular trekking site.' },
   { ImagePath: CarousalImage4, Title: 'Cola Beach, South Goa', Description: 'Crystal clear green colors and its calming swimmable waters' },
   { ImagePath: CarousalImage3, Title: 'Harishchandragad, Maharashtra', Description: 'One of the most challenging treks' },
@@ -37,7 +37,7 @@ function Image({ imagePath, Index, Title, Description }: { imagePath: string, In
         <img src={imagePath} alt="Gallery Image" className="ImageStyle" />
       </div>
       <motion.div style={{ y }} >
-        <h2 >{`#00${Index + 1}`}</h2>
+        <h2 ><i>{`#00${Index + 1}`}</i></h2>
         <h4>{Title}</h4>
         <p>{Description}</p>
       </motion.div>
@@ -71,6 +71,7 @@ export default function TravelGallery() {
             quisquam id expedita eos consequatur tempora, suscipit, reprehenderit dolore nemo aliquid 
             quas quod molestias.</p>
       </motion.div> */}
+      <div className="NullComponent" ></div>
     </div>
   );
 }
