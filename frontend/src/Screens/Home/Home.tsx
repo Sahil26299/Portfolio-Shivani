@@ -41,8 +41,8 @@ const Home: React.FC = () => {
       {/* <TopNavBar /> */}
       <div ref={ProfileRef} className={`ProfileWraper ${isProfileVisible ? 'FadeYIn' : ''} `} >
         <div className='Intro ' >
-          <span style={{ color: Colors.newVar.TXTColor }} >hi there,</span>
-          <span style={{ color: Colors.newVar.TXTColor }} >i am <span  >shivani</span></span>
+          <span style={{ color: Colors.newVar.TXTColor }} >Hi there,</span>
+          <span style={{ color: Colors.newVar.TXTColor }} >I am <span  >Shivani</span></span>
           <hr />
           <p className="typewriter" style={{ color: Colors.newVar.TXTColor }} >{text}<span className='Cursor' style={{ color: Colors.newVar.TXTColor }} >|</span></p>
         </div>
