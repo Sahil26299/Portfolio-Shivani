@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Radio } from 'react-loader-spinner';
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
 export default function ContactUs() {
   const Colors = useContext(ColorSchema);
@@ -117,17 +118,41 @@ export default function ContactUs() {
     }
   }
 
-  const OnSendClick = (e: React.FormEvent<HTMLFormElement>) => {
+  const SendEmail = () => {
     setshowLoader(true);
-    setTimeout(() => {
+    axios({
+      method: 'POST',
+      url: 'http://192.168.43.54:5000/send-email',
+      data: {
+        name: Name,
+        email: Email,
+        message: message
+      }
+    }).then((response) => {
+      console.log(response.data, 'api response');
       setshowLoader(false);
+      if (response.status == 200) {
+        setmessage("");
+        setName("");
+        setEmail("");
+        notifySuccess(response?.data?.message);
 
-    }, 3000);
+      }
+    }).catch((error) => {
+      setshowLoader(false);
+      console.log(error, 'api error');
+      const message_ = error?.response?.data?.message ? error?.response?.data?.message : 'Something went wrong!'
+      notifyError(message_)
+    })
+  }
+
+  const OnSendClick = (e: React.FormEvent<HTMLFormElement>) => {
+
     // prevent default; prevents page reload or a redirect to a different page.
     // Browser by default does this while form submission to submit the form data. 
     e.preventDefault();
     if (ValidateEmail(Email) && ValidateName(Name) && ValidateMessage(message)) {
-      notifySuccess('Success');
+      SendEmail()
     }
     else {
       notifyError('Please enter the details!')
@@ -141,7 +166,7 @@ export default function ContactUs() {
     display: screenDimensions.width < 900 && !showForm ? 'none' : 'block',
   };
   const arrowStyle = {
-    transform:  screenDimensions.width<900 ? showForm ? 'rotate(270deg)' : 'rotate(90deg)' : 'rotate(0deg)',
+    transform: screenDimensions.width < 900 ? showForm ? 'rotate(270deg)' : 'rotate(90deg)' : 'rotate(0deg)',
   }
 
   return (
@@ -160,7 +185,7 @@ export default function ContactUs() {
                     <div className='HorizontalRuler' />
                   </div>
                   <Button className='ButtonClass' color="primary" disabled={screenDimensions.width >= 900} >
-                    <span style={{ color: Colors.newVar.TXTColor }} onClick={()=>setshowForm(!showForm)} >Drop me a mail <span className={showForm ? 'arrowStyleRotated' : 'arrowStyle'} style={arrowStyle} > &rarr;</span></span>
+                    <span style={{ color: Colors.newVar.TXTColor }} onClick={() => setshowForm(!showForm)} >Drop me a mail <span className={showForm ? 'arrowStyleRotated' : 'arrowStyle'} style={arrowStyle} > &rarr;</span></span>
                   </Button>
                 </div>
               </div>
@@ -168,7 +193,7 @@ export default function ContactUs() {
           </Grid>
           <Grid item lg={7} md={7} sm={12} xs={12} display={'flex'} alignItems={'center'} justifyContent={'center'} flexDirection={'column'} >
             <div className='FormWrapper' style={style} >
-              <span id='emailLabel' style={{ color: '#1d1d1d', fontSize:screenDimensions.width < 1000 ? 18 : 20, fontWeight: '500' }} >Write a message:</span>
+              <span id='emailLabel' style={{ color: '#1d1d1d', fontSize: screenDimensions.width < 1000 ? 18 : 20, fontWeight: '500' }} >Write a message:</span>
               <form action="" onSubmit={OnSendClick}>
                 <div id={'emailInputdiv'} style={{ borderBottomColor: NameError != null ? 'red' : 'rgb(65, 195, 247)' }}>
                   <input type={'text'} value={Name} id={'name'} name={'from_name'} style={{ color: '#1d1d1d' }} maxLength={60} placeholder={'Your name'} onChange={(text) => {
@@ -195,18 +220,18 @@ export default function ContactUs() {
                     <Error style={{ color: 'red', fontSize: 30 }} className={'EmailErrorIcon'} /> :
                     <Mail style={{ color: '#1d1d1d', fontSize: screenDimensions.width < 1000 ? 25 : 30 }} />}
                 </div>
-                <div style={{height:60, width:60, marginTop:'5%'}} >
+                <div style={{ height: 60, width: 60, marginTop: '5%' }} >
                   {showLoader ?
                     <Radio
-                    visible={true}
-                    height={screenDimensions.width < 1000 ? "40" : "55"}
-                    width={screenDimensions.width < 1000 ? "40" : "55"}
-                    ariaLabel="radio-loading"
-                    colors={['rgb(65, 195, 247)','rgba(65, 195, 247, 0.75)', "rgba(65, 195, 247, 0.5)"]}
-                    wrapperStyle={{}}
-                    wrapperClass="radio-wrapper"
-                  /> :
-                    <button type="submit" className='Submitbtn' style={{ color: Colors.newVar.TXTColor, backgroundColor: 'rgb(65, 195, 247)',}} >
+                      visible={true}
+                      height={screenDimensions.width < 1000 ? "40" : "55"}
+                      width={screenDimensions.width < 1000 ? "40" : "55"}
+                      ariaLabel="radio-loading"
+                      colors={['rgb(65, 195, 247)', 'rgba(65, 195, 247, 0.75)', "rgba(65, 195, 247, 0.5)"]}
+                      wrapperStyle={{}}
+                      wrapperClass="radio-wrapper"
+                    /> :
+                    <button type="submit" className='Submitbtn' style={{ color: Colors.newVar.TXTColor, backgroundColor: 'rgb(65, 195, 247)', }} >
                       <SendRounded id={'sendIcon'} style={{ fontSize: screenDimensions.width < 1000 ? 25 : 30 }} />
                     </button>}
                 </div>

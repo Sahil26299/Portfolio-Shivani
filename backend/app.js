@@ -38,9 +38,10 @@ app.post('/send-email', (req, res) => {
     // Email content
     const mailOptions = {
         from: email, // Sender email address
-        to: 'shivanibhojane226@gmail.com', // Your email address where you want to receive the message
+        to: 'sahillokhande94@gmail.com', // Your email address where you want to receive the message
+        // Replace receiver above with thesunshineladaki@gmail.com during deployment.
         replyTo:email,
-        subject: `New Message from ${name} (${email})`,
+        subject: `Your Next Travel Companion! Connect with ${name}(${email}) via your Portfolio.`,
         text: message,
     };
 
