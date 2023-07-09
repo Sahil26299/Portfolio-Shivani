@@ -3,10 +3,17 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const {google} = require('googleapis');
+const OAuth2 = google.auth.OAuth2;
 
+const OAuth2_Client = new OAuth2(process.env.OAUTH_CLIENTID, process.env.OAUTH_CLIENT_SECRET);
+OAuth2_Client.setCredentials({refresh_token:process.env.OAUTH_REFRESH_TOKEN});
+const getAccessToken = async() => {
+    return await OAuth2_Client.getAccessToken();
+}
+const access_token = getAccessToken()
 const app = express();
 const port = 5000;
-
 //middleware
 app.use(express.json());
 app.use(cors());
@@ -21,6 +28,7 @@ const transporter = nodemailer.createTransport({
         clientId: process.env.OAUTH_CLIENTID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET,
         refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+        accessToken:access_token
     },
 });
 
@@ -58,5 +66,5 @@ app.post('/send-email', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port} with access token ${access_token}`);
 });

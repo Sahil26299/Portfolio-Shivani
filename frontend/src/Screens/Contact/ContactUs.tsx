@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Radio } from 'react-loader-spinner';
 import Button from '@mui/material/Button';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function ContactUs() {
   const Colors = useContext(ColorSchema);
@@ -118,33 +118,33 @@ export default function ContactUs() {
     }
   }
 
-  const SendEmail = () => {
-    setshowLoader(true);
-    axios({
-      method: 'POST',
-      url: 'http://192.168.43.54:5000/send-email',
-      data: {
-        name: Name,
-        email: Email,
-        message: message
-      }
-    }).then((response) => {
-      console.log(response.data, 'api response');
-      setshowLoader(false);
-      if (response.status == 200) {
-        setmessage("");
-        setName("");
-        setEmail("");
-        notifySuccess(response?.data?.message);
+  // const SendEmail = () => {
+  //   setshowLoader(true);
+  //   axios({
+  //     method: 'POST',
+  //     url: 'http://192.168.43.54:5000/send-email',
+  //     data: {
+  //       name: Name,
+  //       email: Email,
+  //       message: message
+  //     }
+  //   }).then((response) => {
+  //     console.log(response.data, 'api response');
+  //     setshowLoader(false);
+  //     if (response.status == 200) {
+  //       setmessage("");
+  //       setName("");
+  //       setEmail("");
+  //       notifySuccess(response?.data?.message);
 
-      }
-    }).catch((error) => {
-      setshowLoader(false);
-      console.log(error, 'api error');
-      const message_ = error?.response?.data?.message ? error?.response?.data?.message : 'Something went wrong!'
-      notifyError(message_)
-    })
-  }
+  //     }
+  //   }).catch((error) => {
+  //     setshowLoader(false);
+  //     console.log(error, 'api error');
+  //     const message_ = error?.response?.data?.message ? error?.response?.data?.message : 'Something went wrong!'
+  //     notifyError(message_)
+  //   })
+  // }
 
   const OnSendClick = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -152,7 +152,13 @@ export default function ContactUs() {
     // Browser by default does this while form submission to submit the form data. 
     e.preventDefault();
     if (ValidateEmail(Email) && ValidateName(Name) && ValidateMessage(message)) {
-      SendEmail()
+      // SendEmail()
+      notifySuccess('Currently under development, will be available soon!')
+      setshowLoader(true);
+      setTimeout(() => {
+        
+        setshowLoader(false);
+      }, 3000);
     }
     else {
       notifyError('Please enter the details!')

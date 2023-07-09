@@ -50,18 +50,9 @@ section {
         left: calc(50% + 130px);
         position: absolute;
 
-        >h2 {
-            margin: 0;
-            color: $theme-color;
-            font-size: 56px;
-            font-weight: 700;
-            letter-spacing: -3px;
-            line-height: 1.2;
-        }
-
         >h4 {
             margin: 0;
-            color: #fff;
+            color:  $theme-color;
             font-size: 24px;
             font-weight: 600;
             // letter-spacing: -3px;
@@ -76,7 +67,7 @@ section {
             font-weight: 400;
             // letter-spacing: -3px;
             line-height: 1.2;
-            text-shadow: 5px 5px 10px #000000;
+            text-shadow: 0px 0px 5px #000000;
         }
     }
 
@@ -121,10 +112,6 @@ section {
             left: calc(50% + 115px);
             position: absolute;
 
-            >h2 {
-                font-size: 46px;
-            }
-
             >h4 {
                 font-size: 20px;
             }
@@ -148,8 +135,8 @@ section {
         width: 85vw;
 
         >div:first-child {
-            width: 253.34px;
-            height: 380px;
+            // width: 253.34px;
+            // height: 380px;
             border-radius: 8px;
         }
 
@@ -157,9 +144,6 @@ section {
             left: calc(50% + 110px);
             position: absolute;
 
-            >h2 {
-                font-size: 40px;
-            }
             >h4 {
                 font-size: 18px;
             }
@@ -183,8 +167,8 @@ section {
         width: 100vw;
 
         >div:first-child {
-            width: 250px;
-            height: 375px;
+            // width: 250px;
+            // height: 375px;
         }
 
         >div:nth-child(2) {
@@ -192,9 +176,6 @@ section {
             left: 20%;
             position: absolute;
 
-            >h2 {
-                font-size: 30px;
-            }
             >h4 {
                 font-size: 16px;
             }
