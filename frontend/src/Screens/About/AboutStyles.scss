@@ -11,7 +11,7 @@
         // background: red;
 
         >h2 {
-            color:$theme-color;
+            color: $theme-color;
             font-size: 24px;
             text-align: center;
         }
@@ -24,13 +24,27 @@
     }
 
     .secondGridItem {
-
-        // background: green;
-        .ProfileImage {
+        .profileImageBackground {
             height: 500px;
-            object-fit: contain;
-            // border: 3px dashed $theme-color;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             border-radius: 10px;
+            overflow: hidden;
+
+            .ProfileImage {
+                height: 500px;
+                object-fit: cover;
+                object-position: center;
+                // border: 3px dashed $theme-color;
+                opacity: 0;
+                transition: opacity 250ms ease-in-out;
+            }
+        }
+        .profileImageBackground.loadedImg{
+            .ProfileImage{
+                opacity: 1;
+            }
         }
     }
 }
@@ -38,104 +52,94 @@
 @media (max-width:1200px) {
     .GridContainer {
         padding: 5% 0px 0px 0px !important;
+
         .firstGridItem {
             // background: red;
-    
+
             >h2 {
-                color:$theme-color;
+                color: $theme-color;
                 font-size: 20px;
             }
-    
+
             >span {
                 width: 75%;
                 font-size: 13px;
                 text-align: right;
             }
         }
-    
+
         .secondGridItem {
-    
+
             // background: green;
-            .ProfileImage {
+            .profileImageBackground {
                 height: 400px;
-                object-fit: contain;
-                // border: 3px dashed $theme-color;
-                border-radius: 10px;
+
+                .ProfileImage {
+                    height: 400px;
+                }
             }
         }
     }
 }
-@media (max-width:950px){
+
+@media (max-width:950px) {
     .GridContainer {
         .firstGridItem {
             width: 75%;
             margin-top: 3%;
+
             >h2 {
-                color:$theme-color;
+                color: $theme-color;
                 font-size: 24px;
             }
-    
+
             >span {
                 width: 80%;
                 font-size: 14px;
                 text-align: center;
             }
         }
-    
+
         .secondGridItem {
-    
+
             // background: green;
-            .ProfileImage {
-                height: 500px;
-                object-fit: contain;
-                // border: 3px dashed $theme-color;
-                border-radius: 10px;
-            }
-        }
-    }
-}
-@media (max-width:550px){
-    .GridContainer{
-        .secondGridItem {
-        
-            // background: green;
-            .ProfileImage {
+            .profileImageBackground{
                 height: 400px;
-                object-fit: contain;
-                // border: 3px dashed $theme-color;
-                border-radius: 10px;
+                .ProfileImage {
+                    height: 400px;
+                }
             }
         }
     }
 }
 
-@media (max-width:400px){
+@media (max-width:400px) {
     .GridContainer {
         .firstGridItem {
             width: 80%;
             margin-top: 3%;
+
             >h2 {
-                color:$theme-color;
+                color: $theme-color;
                 font-size: 20px;
             }
-    
+
             >span {
                 width: 80%;
                 font-size: 13px;
                 text-align: center;
             }
         }
-    
+
         .secondGridItem {
-    
+
             // background: green;
-            .ProfileImage {
+            .profileImageBackground{
                 height: 300px;
-                object-fit: contain;
-                // border: 3px dashed $theme-color;
-                border-radius: 10px;
+                .ProfileImage {
+                    height: 300px;
+                }
             }
         }
     }
 }
-

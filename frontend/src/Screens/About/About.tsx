@@ -4,6 +4,7 @@ import { ColorSchema } from '../../Utils/GlobalState'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ProfileImage from '../../assets/Images/shivaniProfile.jpg';
+import ProfileImageLoading from '../../assets/Images/shivaniProfileLoading.jpg';
 import Divider from '../../Components/CommonDivider/Divider';
 
 export default function About() {
@@ -14,6 +15,20 @@ export default function About() {
   });
 
   useEffect(() => {
+    const blurredImgDiv = document.querySelector(".profileImageBackground") as HTMLDivElement | Element;
+    const origImg = blurredImgDiv.querySelector("img") as HTMLImageElement;
+    console.log(origImg,'blurredImgDiv');
+    function loaded(){
+      console.log('loaded');
+      blurredImgDiv.classList.add("loadedImg")
+    }
+    if(origImg?.complete){
+      loaded()
+    }
+    else{
+      origImg?.addEventListener('load',loaded);
+    }
+
     function handleResize() {
       setScreenDimensions({
         width: window.innerWidth,
@@ -30,7 +45,7 @@ export default function About() {
       <Box sx={{ marginTop: '5%' }} >
         <Grid className='GridContainer' container flexDirection={screenDimensions.width < 950 ? 'column-reverse' : 'row'} spacing={screenDimensions.width < 950 ? 2 : 3} alignItems={'center'} justifyContent={'center'} >
           <Grid className='firstGridItem' item lg={6} md={6} sm={12} display={'flex'} alignItems={screenDimensions.width > 950 ? 'flex-end' : 'center'} flexDirection={'column'} >
-            <h2  >Wanna know about me ?</h2>
+            <h2 >Wanna know about me ?</h2>
             <span style={{ color: Colors.newVar.TXTColor }}  >
               <span> At the age of 7, I began my journey in trekking,
                 igniting a passion that has fueled my travels for over 15 years.
@@ -51,7 +66,9 @@ export default function About() {
             </span>
           </Grid>
           <Grid className='secondGridItem' item lg={6} md={6} sm={12} display={'flex'} alignItems={'flex-start'} flexDirection={'column'} >
-            <img src={ProfileImage} alt="" className='ProfileImage' />
+            <div className='profileImageBackground' style={{backgroundImage:`url(${ProfileImageLoading})`}} >
+              <img src={ProfileImage} alt="" className='ProfileImage' />
+            </div>
           </Grid>
         </Grid>
       </Box>
